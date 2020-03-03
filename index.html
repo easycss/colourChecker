@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Color Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+
+
+    <style>
+        #container {
+            padding: 50px;
+            background-color: #fff;
+        }
+
+        .colorCircle {
+            box - shadow: 0px 0px 25px 0px #333;
+            width: 235px;
+            height: 235px;
+            margin-bottom: 15px;
+            border-radius: 50%;
+        }
+
+        .colorArea input {
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid #ccc;
+        }
+
+        .colorArea button {
+            padding: 10px;
+            font-size: 1rem;
+            margin: 10px;
+            background-color: #666;
+            color: #fff;
+            border: 2px solid #666;
+        }
+
+        .colorArea button:hover {
+            background - color: #111;
+            border-color: #111;
+            cursor: pointer;
+        }
+
+        #masthead {
+            padding: 0;
+            margin: 50px 0 -35px 50px;
+            font-family: sans-serif;
+            font-size: 1.8rem;
+        }
+
+        .instructions {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: -30 0 0 0;
+            color: #c0c0c0;
+            font-size: 1.2rem;
+        }
+
+        .instructions h3 {
+            margin: 0;
+        }
+
+        .instructions p {
+            margin: 2px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="masthead">Color = </h1>
+    <div id="container"></div>
+
+    <script type="text/babel">
+
+                    class ColorChecker extends React.Component{
+                        constructor(props, context){
+                    super(props, context)
+
+            this.state= {
+                bgColor: "#887766"
+            }
+
+            this.colorValue = this.colorValue.bind(this)
+            this.setNewColor = this.setNewColor.bind(this)
+        }
+
+        colorValue(e){
+                        this.setState({
+                            color: e.target.value
+                        })
+                    }
+
+         setNewColor(e) {
+        this.setState({
+          bgColor: this.state.color
+        });
+    
+        this._input.focus()
+        this._input.value=""
+        e.preventDefault();
+      }
+ 
+
+        render() {
+            var squareStyle = {
+                        backgroundColor: this.state.bgColor
+                }
+
+            return (
+                <div className="colorArea">
+                        <div style={squareStyle} className="colorCircle"></div>
+
+                        <form onSubmit={this.setNewColor}>
+                            <input onChange={this.colorValue}
+                                    ref={
+                                        (el) => this._input = el
+                                    }
+                                placeholder="Enter a color value"></input>
+                            <button type="submit">Go</button>
+                        </form>
+
+                        <div className="instructions">
+                        <h3>Examples:</h3>
+                        <p>Hex Colour = <strong>#ffff00</strong></p>
+                        <p>Colour Name = <strong>red</strong></p>
+                        <p>RGBA = <strong>rgba(1,255,100,.5)</strong></p>
+                        </div>  
+
+                        <ColorLabel color={this.state.bgColor} />
+                    </div>
+                    )
+        }
+    }
+
+    class ColorLabel extends React.Component{
+        render() {
+            return ReactDOM.createPortal(
+                " " + this.props.color,
+                document.querySelector("#masthead")
+            )
+        }
+    }
+
+    ReactDOM.render(
+        <div>
+            <ColorChecker />
+        </div>,
+        document.querySelector("#container")
+    )
+    </script>
+</body>
+
+</html>
