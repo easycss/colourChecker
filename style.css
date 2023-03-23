@@ -1,0 +1,57 @@
+ <style>
+        #container {
+            padding: 50px;
+            background-color: #fff;
+        }
+
+        .colorCircle {
+            box - shadow: 0px 0px 25px 0px #333;
+            width: 235px;
+            height: 235px;
+            margin-bottom: 15px;
+            border-radius: 50%;
+        }
+
+        .colorArea input {
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid #ccc;
+        }
+
+        .colorArea button {
+            padding: 10px;
+            font-size: 1rem;
+            margin: 10px;
+            background-color: #666;
+            color: #fff;
+            border: 2px solid #666;
+        }
+
+        .colorArea button:hover {
+            background - color: #111;
+            border-color: #111;
+            cursor: pointer;
+        }
+
+        #masthead {
+            padding: 0;
+            margin: 50px 0 -35px 50px;
+            font-family: sans-serif;
+            font-size: 1.8rem;
+        }
+
+        .instructions {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: -30 0 0 0;
+            color: #c0c0c0;
+            font-size: 1.2rem;
+        }
+
+        .instructions h3 {
+            margin: 0;
+        }
+
+        .instructions p {
+            margin: 2px 0;
+        }
+    </style>
